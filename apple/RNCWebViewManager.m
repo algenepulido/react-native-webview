@@ -53,7 +53,6 @@ RCT_EXPORT_MODULE()
   return webView;
 }
 
-RCT_EXPORT_VIEW_PROPERTY(skipSslErrors, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(source, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(onFileDownload, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onLoadingStart, RCTDirectEventBlock)
