@@ -53,6 +53,7 @@ RCT_EXPORT_MODULE()
   return webView;
 }
 
+RCT_EXPORT_VIEW_PROPERTY(skipSslErrors, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(source, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(onFileDownload, RCTDirectEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(onLoadingStart, RCTDirectEventBlock)
@@ -155,6 +156,10 @@ RCT_CUSTOM_VIEW_PROPERTY(scrollEnabled, BOOL, RNCWebView) {
 
 RCT_CUSTOM_VIEW_PROPERTY(sharedCookiesEnabled, BOOL, RNCWebView) {
     view.sharedCookiesEnabled = json == nil ? false : [RCTConvert BOOL: json];
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(skipSslErrors, BOOL, RNCWebView) {
+    view.skipSslErrors = json == nil ? false : [RCTConvert BOOL: json];
 }
 
 #if !TARGET_OS_OSX

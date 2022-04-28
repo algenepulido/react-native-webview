@@ -943,6 +943,9 @@ NSString *const CUSTOM_SELECTOR = @"_CUSTOM_SELECTOR_";
   didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
                   completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable))completionHandler
 {
+    if (_skipSslErrors) {
+        completionHandler(NSURLSessionAuthChallengeUseCredential, [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]);
+    } else {
     NSString* host = nil;
     if (webView.URL != nil) {
         host = webView.URL.host;
@@ -982,6 +985,7 @@ NSString *const CUSTOM_SELECTOR = @"_CUSTOM_SELECTOR_";
         }
     }
     completionHandler(NSURLSessionAuthChallengePerformDefaultHandling, nil);
+    }
 }
 
 #pragma mark - WKNavigationDelegate methods
